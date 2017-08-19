@@ -1,6 +1,6 @@
 ﻿namespace DddInPractice.Logic
 {
-    public sealed class SnackMachine
+    public sealed class SnackMachine : Entity
     {
         public Money MoneyInTransaction { get; set; }
         public Money MoneyInMachine { get; set; }
