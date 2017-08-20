@@ -51,12 +51,37 @@ namespace DddInPractice.Tests
         [InlineData(0, 0, 0, -1, 0, 0)]
         [InlineData(0, 0, 0, 0, -1, 0)]
         [InlineData(0, 0, 0, 0, 0, -1)]
-        public void GivenNegativeMoney_CreateNewInstance_ThrowsInvalidOperationException(
-            int oneCentCount, int tenCentCount, int quarterCount, int oneDollarCount, int fiveDollarCount, int twentyDollarCount)
+        public void GivenNegativeMoney_CreateNewInstanceOfMoney_ThrowsInvalidOperationException(
+            int oneCentCount, 
+            int tenCentCount, 
+            int quarterCount, 
+            int oneDollarCount, 
+            int fiveDollarCount, 
+            int twentyDollarCount)
         {
             Action action = () => new Money(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount);
 
             action.ShouldThrow<InvalidOperationException>();
+        }
+
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0, 0)]
+        [InlineData(1, 2, 3, 0, 0, 0, 0.96)]
+        [InlineData(1, 2, 3, 4, 0, 0, 4.96)]
+        [InlineData(1, 2, 3, 4, 5, 0, 29.96)]
+        [InlineData(1, 2, 3, 4, 5, 6, 149.96)]
+        public void GivenDenomination_CreateNewInstanceOfMoney_MoneyCorrectlyContainsItsValue(
+            int oneCentCount, 
+            int tenCentCount, 
+            int quarterCount, 
+            int oneDollarCount, 
+            int fiveDollarCount, 
+            int twentyDollarCount, 
+            decimal expectedValue)
+        {
+            var money = new Money(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount);
+
+            money.Amount.Should().Be(expectedValue);
         }
     }
 }
