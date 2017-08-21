@@ -59,7 +59,7 @@ namespace DddInPractice.Tests
             int fiveDollarCount, 
             int twentyDollarCount)
         {
-            Action action = () => new Money(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount);
+            Action action = () => { new Money(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount); };
 
             action.ShouldThrow<InvalidOperationException>();
         }
