@@ -69,6 +69,7 @@ namespace DddInPractice.Logic
             return OneCentCount == other.OneCentCount
                    && TenCentCount == other.TenCentCount
                    && QuarterCount == other.QuarterCount
+                   && OneDollarCount == other.OneDollarCount
                    && FiveDollarCount == other.FiveDollarCount
                    && TwentyDollarCount == other.TwentyDollarCount;
         }
